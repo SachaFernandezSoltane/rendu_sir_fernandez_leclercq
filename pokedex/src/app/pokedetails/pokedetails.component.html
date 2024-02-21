@@ -1,0 +1,8 @@
+<div>
+    <p>Le pokémon sélectionné est : {{ detail?.name }}</p>
+
+    <p>Les compétences sont : </p>
+    <ul>
+        <li *ngFor="let ab of detail?.abilities"> {{ab.ability.name}} </li>
+    </ul>
+</div>

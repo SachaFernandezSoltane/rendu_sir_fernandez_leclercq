@@ -1,0 +1,18 @@
+<p>Id sélectionné : {{selectedPokeId}}</p>
+<p>test : {{searchPokeId}}</p>
+<div>
+  <p>Pokémon sélectionné : {{ findSelectedPokemon()?.name }}</p>
+  <!-- Affichez d'autres détails du Pokémon si nécessaire -->
+</div>
+<ul>
+  <li *ngFor="let poke of pokes">{{poke.name}}</li>
+</ul>
+
+<input [(ngModel)]="searchPokeId">
+<select [(ngModel)]="selectedPokeId">
+  <option *ngFor="let poke of pokes | filterPokemon:'name':searchPokeId" [value]="poke.id">{{poke.name}}</option>
+</select>
+<button (click)="go()">GO !</button>
+<div *ngIf="selectedPokemon">
+  <app-pokedetails [details]="selectedPokemon"></app-pokedetails>
+</div>
