@@ -21,7 +21,7 @@ mvn clean:install
 Ensuite lancer le serveur, puis lancer la classe situé dans "/jpa/src/main/java/jpa/JpaTest.java", cette classe devrait 
 créer puis insérér des informations en base de données.
 
-### Avancé du projet ###
+### Avancée du projet ###
 
 **Q1-2)**
 Dans un premier temps, nous avons créé des classes assez simplistes, étant donné qu'il y avait beaucoup de travaux pratiques à réaliser. Il n'était pas judicieux pour nous de perdre trop de temps sur celui-ci.
@@ -52,7 +52,32 @@ Le formulaire qui permet d'insérer fonctionne assez simplement : on récupère 
 Pour le deuxième, c'est encore plus simple : on instancie un DAO et on exécute la méthode findAll() du DAO.
 
 ---
+## TP 6 : Vanilla JS
 
+### Accéder au projet ###
+
+Pour accéder au projet, il suffit d'ouvrir le fichier canvas.html du projet dans un navigateur.
+
+### Avancée du projet ###
+
+Nous avons tout d'abord essayé de faire le projet de nous meme sans regarder les vidéos. Cependant, nous avons été bloqués a la question 5 et les coordonnées du clic ne s'affichaient pas. N'ayant pas pu avoir d'aide par notre professeur, nous avons donc refait notre projet depuis la question 1 en suivant les vidéos. Arrivé a la question 5, cela fonctionnait correctement et donc nous avons continué jusqu'a la question 8. A ce moment la, nous pensons avoir raté une étape car notre projet ne fonctionnait pas dans le sens ou rien ne s'affichait, que ça soit dans la console ou dans le canva même avec des console.log dans le code. Nous avons demandé a un camarade qui n'a pas non plus trouvé le souci, et nous avons donc continué le projet jusqu'a la question 13 sans que cela fonctionne.
+
+**Q1-Q5)**
+Ces premieres questions permettent de mettre en place le projet. On créé une fonction Dnd qui définit les 3 actions nécessaires à notre appli : handleMouseDown, handleMouseMove, handleMouseDown qui détectent respectivement lorsque l'on clique, que l'on déplace la souris en cliquant, et que l'on relache la souris. Il y a également une fonction getMousePosition qui est utilisée dans nos 3 actions qui permet de récupérer les coordonnées de la souris et donc de suivre le mouvement de la souris sur le canva (la zone de dessin).
+
+**Q6)**
+Ici, on développe la classe Model du projet, qui contient les différentes structures des éléments du canva. On y définit les deux formes possibles ligne et rectangle ainsi que leurs caractéristiques (hauteur, largeur, couleur, etc...). La classe modele contiendra uniquement ce code qui permet de figer l'état possible des objets qui y seront créés.
+
+**Q7-Q8)**
+Ces deux questions vont mettre en place la Vue du projet. Le but de la vue est d'afficher les actions qui sont demandées selon ce qu'effectue l'utilisateur. Pour faire simple, cette classe dessine les formes selon les caractéristiques des objets qui ont été définis dans la classe Model : cette classe gère tout ce qui est lié à l'affichage.
+
+**Q9-Q11)**
+Cette fois ci c'est le Controleur qui va etre créé lors de ces questions. Son role est de récupérer les actions utilisateurs afin par la suite de créer les objets associés et de les afficher. Le controleur est représenté par une fonction Pencil ayant comme attributs la forme choisie, l'épaisseur et la couleur. Le controlleur utilise le modèle puis la vue ce qui permet de créer une série d'appel depuis l'action utilisateur jusqu'a l'affichage.
+
+**Q12-Q14)**
+Enfin, la derniere partie de ce TP permet d'ajouter une fonction de suppression de formes en stockant sous forme d'une liste toutes les formes déja créées. Chaque nouvelle forme créée est référencée, et peut donc etre supprimée par l'utilisateur en utilisant la liste sur la droite. L'affichage dynamique est géré par un DOM qui ajoute des élements html selon le contenu de la liste.
+
+---
 ## TP 7 : Pokédex en angular
 
 ### Démarrer le projet ####
@@ -73,7 +98,7 @@ ng serve
 ```
 Ensuite il ne vous restera qu'à vous rendre sur l'url : "localhost:4200"
 
-### Avancé du projet ###
+### Avancée du projet ###
 
 Le projet a été réalisé à 100%, nous n'avons rien loupé, nous tenons à remonter que les vidéos sont très
 utiles bien qu'elles nécessitent une mise à jour, en 5 ans, Angular a bien évolué et certains
