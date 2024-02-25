@@ -51,6 +51,61 @@ Le formulaire qui permet d'insérer fonctionne assez simplement : on récupère 
 
 Pour le deuxième, c'est encore plus simple : on instancie un DAO et on exécute la méthode findAll() du DAO.
 
+**Q6-7-8)**
+
+Désormais, nous avons utilisé tout ce que nous avions fait avant (sauf le servelet) pour faire notre back, nous avons
+générer des routes ainsi que la documentation de l'API avec swagger, à vrai dire il n'y a pas grand chose à dire sur cette partie,
+nous avons juste utilisé ce que nous avions fait avant pour faire notre back.
+
+Il nous a fallu transférer nos entités créées dans le TP précédent, en les modifiant légèrement pour les adapter à notre projet.
+
+```java
+@Entity
+@XmlRootElement(name = "User")
+public class User implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XmlAttribute
+    private Long id;
+    @XmlAttribute
+
+    private String username;
+    @XmlAttribute
+
+    private String email;
+    @XmlAttribute
+
+    private String password;
+
+    @XmlElement
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Ticket> tickets = new ArrayList<>();
+```
+le DAO lui ne change pas, il suffit ensuite de créer un fichier ressource (contenant les routes) comme ceci :
+
+```java
+@Path("user")
+@Produces({"application/json", "application/xml"})
+public class UserResource {
+    private UserDAO userDAO = new UserDAO();
+
+    @POST
+    @Path("/new")
+    public Response newUser() {
+        try {
+            User user = new User("UserTest", "usertest@gmail.com", "passwordtest");
+            userDAO.save(user);
+            return Response.ok().entity("SUCCESS").build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                    .entity("Failed to create new user: " + e.getMessage()).build();
+        }
+    }
+```
+Enfin, nous avons utilisé swagger pour documenter notre API, pour ce faire il suffit de rajouter les dépendances dans le pom.xml et 
+swagger s'occupe du reste ! 
+
+
 ---
 ## TP 6 : Vanilla JS
 
@@ -154,3 +209,5 @@ public stringVar = new Subject<number>();
     this.stringVar.next(newStringVar);
   }
 ```
+Ainsi le tp se termine, nous avons appris à utiliser Angular, à faire des requêtes à une API, à créer des composants ect..., tout a bien 
+fonctionné, désormais nous pouvons faire le vrai front du projet puis dans un dernier temps le faire communiquer avec notre API back.
